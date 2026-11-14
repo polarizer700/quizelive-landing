@@ -37,7 +37,7 @@ jobs:
 
       - name: Deploy static files
         run: |
-          rsync -az --delete --chmod=Du755,Fu644 -e "ssh -i ~/.ssh/deploy_key" out/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/quizelive/landing/
+          rsync -az --delete --chmod=D755,F644 -e "ssh -i ~/.ssh/deploy_key" out/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/quizelive/landing/
 
       - name: Smoke check
         run: curl -fsS -o /dev/null https://quizlive.ru/
