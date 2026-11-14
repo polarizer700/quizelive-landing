@@ -3,6 +3,9 @@ node_modules
 out
 *.tsbuildinfo
 .DS_Store
+.env
+.env.*
+!.env.example
 .idea
 *.local
 .yarn/cache
