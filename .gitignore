@@ -3,6 +3,7 @@ node_modules
 out
 *.tsbuildinfo
 .DS_Store
+.idea
 *.local
 .yarn/cache
 .yarn/install-state.gz

@@ -7,6 +7,7 @@ import "@fontsource-variable/fraunces/wght-italic.css";
 import "@fontsource-variable/outfit";
 
 import { site } from "@shared/config";
+import { CookieBanner } from "@widgets/cookie-banner";
 
 import "./globals.css";
 
@@ -36,7 +37,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html lang={locale}>
-      <body id="top">{children}</body>
+      <body id="top">
+        {children}
+        <CookieBanner />
+      </body>
     </html>
   );
 }
