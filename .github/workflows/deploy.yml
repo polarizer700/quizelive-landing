@@ -25,6 +25,12 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      - name: Lint
+        run: yarn lint
+
+      - name: Typecheck
+        run: yarn typecheck
+
       - name: Build (static export -> out/)
         run: yarn build
 
