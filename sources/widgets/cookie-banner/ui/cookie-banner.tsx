@@ -1,23 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 
 import { operator } from "@shared/config";
 
 const STORAGE_KEY = "quizelive.cookieConsent";
 
+function subscribe() {
+  return () => {};
+}
+
+function readAccepted() {
+  try {
+    return window.localStorage.getItem(STORAGE_KEY) === "accepted";
+  } catch {
+    return false;
+  }
+}
+
 export function CookieBanner() {
-  const [visible, setVisible] = useState(false);
+  const accepted = useSyncExternalStore(subscribe, readAccepted, () => true);
+  const [dismissed, setDismissed] = useState(false);
 
-  useEffect(() => {
-    try {
-      setVisible(window.localStorage.getItem(STORAGE_KEY) !== "accepted");
-    } catch {
-      setVisible(true);
-    }
-  }, []);
-
-  if (!visible) return null;
+  if (accepted || dismissed) return null;
 
   return (
     <div className="cookie-banner" role="dialog" aria-live="polite">
@@ -35,7 +40,7 @@ export function CookieBanner() {
           } catch {
             // ignore
           }
-          setVisible(false);
+          setDismissed(true);
         }}
       >
         Принять
