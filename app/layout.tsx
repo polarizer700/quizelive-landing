@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import "@fontsource-variable/fraunces/wght.css";
-import "@fontsource-variable/fraunces/wght-italic.css";
 import "@fontsource-variable/outfit";
+import "@fontsource/space-mono";
 
 import { site } from "@shared/config";
 import { CookieBanner } from "@widgets/cookie-banner";
